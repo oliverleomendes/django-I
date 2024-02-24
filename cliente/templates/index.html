@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tito's Stock</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Tito's Stock</h1>
+    <p>Sistema de Gerenciamento de Estoque</p>
+
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'cadastro' %}">Cadastre-se</a>
+</body>
+</html>
