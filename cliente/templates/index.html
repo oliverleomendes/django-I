@@ -1,17 +1,38 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tito's Stock</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-<body>
-    <h1>Tito's Stock</h1>
-    <p>Sistema de Gerenciamento de Estoque</p>
+{% extends "master.html" %}
 
-    <a href="{% url 'index' %}">Home</a>
-    <a href="{% url 'cadastro' %}">Cadastre-se</a>
-</body>
-</html>
+{% block content %}
+    <h4>Lista de Clientes</h4>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome Completo</th>
+                <th>E-mail</th>
+                <th>Situação</th>
+                <th>Data de Cadastro</th>
+                <th>Data de Atualização</th>
+                <th>Gerenciar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if lista %}
+                {% for cliente in lista %}
+                    <tr>
+                        <td>{{ cliente.primeiro_nome }} {{ cliente.sobrenome }}</td>
+                        <td>{{ cliente.email }}</td>
+                        <td>{{ cliente.status }}</td>
+                        <td>{{ cliente.created_at }}</td>
+                        <td>{{ cliente.updated_at }}</td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td class="text-center" colspan="6">
+                        Nenhum cliente cadastrado
+                    </td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock  %}

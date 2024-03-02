@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tito's Stock</title> 
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <h1>Tito's Stock</h1>
+    <p>Sistema de Gerenciamento de Estoque</p>
+
+    <a href="{% url 'indexEstoque' %}">Estoque</a>
+    <a href="{% url 'indexClientes' %}">Clientes</a>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,8 +1,9 @@
 from django.shortcuts import render
-# Create your views here.
+from .models import Clientes
 
 def index(request):
-    return render(request, 'index.html')
+    lista_clientes = Clientes.objects.all()
+    return render(request, 'index.html', {'lista': lista_clientes})
 
 def cadastro(request):
     return render(request, 'cadastro.html')
