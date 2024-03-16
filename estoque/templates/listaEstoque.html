@@ -1,0 +1,42 @@
+{% extends "masterEstoque.html" %}
+
+{% block content %}
+    <h4>Lista de Produtos</h4>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Estoque (Min)</th>
+                <th>Estoque (Max)</th>
+                <th>Data de Cadastro</th>
+                <th>Data de Atualização</th>
+                <th>Gerenciar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if lista %}
+                {% for produto in lista %}
+                    <tr>
+                        <td>{{ produto.nome_produto }}</td>
+                        <td>{{ produto.descricao }}</td>
+                        <td>{{ produto.preco }}</td>
+                        <td>{{ produto.min_estoque }}</td>
+                        <td>{{ produto.max_estoque }}</td>
+                        <td>{{ produto.created_at }}</td>
+                        <td>{{ produto.updated_at }}</td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td class="text-center" colspan="6">
+                        Nenhum produto cadastrado
+                    </td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock  %}
