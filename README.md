@@ -4,8 +4,8 @@
 Desenvoler aplicações com o framework Django para iniciantes.
 
 ## Bibliotecas e Framworks
-Django
-Bootstrap
+* Django
+* Bootstrap
 
 ## Banco de Dados
-DB SQLite
+* DB SQLite
