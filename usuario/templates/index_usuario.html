@@ -4,8 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tito's Stock</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 </head>
 <body>
-    <h1>Autenticação</h1>
+
+    <main class="container">
+        <h1>Tito's Stock</h1>
+        <div class="d-flex justify-content-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="{% url 'login_usuario' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="email">Email</label>
+                                <input type="text" id="email" class="form-control" name="email" placeholder="E-mail">
+                            </div>
+                            <div class="col-12 col-lg-12">
+                                <label for="senha">Senha</label>
+                                <input type="password" id="senha" class="form-control" name="senha" placeholder="Senha">
+                            </div>
+                            <div class="col-12 col-lg-12 mt-2">
+                                <button class="btn btn-primary">Logar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form action="{% url 'criar_usuario' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" class="form-control" name="nome" placeholder="Nome">
+                            </div>
+                            <div class="col-12 col-lg-12">
+                                <label for="email">Email</label>
+                                <input type="text" id="email" class="form-control" name="email" placeholder="E-mail">
+                            </div>
+                            <div class="col-12 col-lg-12">
+                                <label for="senha">Senha</label>
+                                <input type="password" id="senha" class="form-control" name="senha" placeholder="Senha">
+                            </div>
+                            <div class="col-12 col-lg-12 mt-2">
+                                <button class="btn btn-success">Criar conta</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
