@@ -2,12 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 
-# Create your views here.
 def index(request):
     return render(request, 'index_usuario.html')
-
-def cadastro(request):
-    return render(request, 'cadastro_usuario.html')
 
 def criar(request):
     if request.method == 'POST':
@@ -20,7 +16,7 @@ def criar(request):
             return redirect('index_usuario')
         if not email.strip():
             print('O campo email não pode ficar em branco')
-            return redirect('index_usuario')
+            return redirect('index_usuario')        
         if User.objects.filter(email=email).exists():
             print('Usuário já cadastrado')
             return redirect('index_usuario')

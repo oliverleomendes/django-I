@@ -3,11 +3,17 @@ from .models import Clientes
 from datetime import datetime
 
 def index(request):
-    lista_clientes = Clientes.objects.all()
-    return render(request, 'index.html', {'lista': lista_clientes})
+    if request.user.is_authenticated:
+        lista_clientes = Clientes.objects.all()
+        return render(request, 'index.html', {'lista': lista_clientes})
+    else:
+        return redirect('index_usuario')
 
 def cadastro(request):
-    return render(request, 'cadastro.html')
+    if request.user.is_authenticated:
+        return render(request, 'cadastro.html')
+    else:
+        return redirect('index_usuario')
 
 def criar(request):
     nome = request.POST['nome']
@@ -19,8 +25,11 @@ def criar(request):
     return redirect('index_cliente')
 
 def editar(request, id_cliente):
-    cliente = get_object_or_404(Clientes, pk=id_cliente)
-    return render(request, 'editar_cliente.html', {'dados_cliente': cliente})
+    if request.user.is_authenticated:
+        cliente = get_object_or_404(Clientes, pk=id_cliente)
+        return render(request, 'editar_cliente.html', {'dados_cliente': cliente})
+    else:
+        return redirect('index_usuario')
 
 def atualizar_cliente(request):
     id_cliente = request.POST["id"]
